@@ -18,7 +18,7 @@ const $ = (query) => /** @type {HTMLElement}*/ (document.querySelector(query))
 //
 
 /** @type {"z" | "l" | "o" | "s" | "i" | "j" | "t" | "#" | "@" | "_"} */
-let current     = "z" 
+let current     = "_" 
 let mapString   = ""
 let queueString = ""
 
@@ -65,6 +65,30 @@ function init()
     board.addEventListener("mousedown",  () => drag = true)
     board.addEventListener("mouseup",    () => drag = false)
     board.addEventListener("mouseleave", () => drag = false)
+
+    const queue = /** @type {HTMLTextAreaElement}*/ ($("#tools-queue-string"))
+
+    queue.addEventListener("input", e => 
+    {
+        const { data } = e
+
+        const filter = ["z", "l", "o", "s", "i", "j", "t", "?"]
+
+        let h = queue.value
+        let j = h.split("").filter(x => filter.indexOf(x.toLowerCase()) > -1).join("")
+    
+        if (j.split("?").length > 2)
+        {
+            const s = j.split("?")
+            
+            j = [s[0], s[1]].join("?")
+        }
+    
+        queueString = j
+        queue.value = j.toUpperCase()
+    
+        ;(/** @type {HTMLTextAreaElement}*/ ($("#tools-map-string"))).value = (mapString + (queueString ? "?" : "") + queueString).toUpperCase()
+    })
 }
 
 const palette = {
@@ -111,7 +135,7 @@ function draw(x, y)
     const index = y * width + x
     mapString   = mapString.substring(0, index) + current + mapString.substring(index + 1)
 
-    //console.log(mapString)
+    ;(/** @type {HTMLTextAreaElement}*/ ($("#tools-map-string"))).value = (mapString + (queueString ? "?" : "") + queueString).toUpperCase()
 }    
 
 $("#tools-picker-z").addEventListener("click", () => setCurrent("z"))
