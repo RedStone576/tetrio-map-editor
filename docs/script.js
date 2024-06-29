@@ -1,5 +1,5 @@
 // hewwo, welcome to the source code :3
-// sorry for the amount of crazy looking jsdoc and some questionable code style hehehehehe
+// sorry for the amount of crazy looking jsdoc clutter and some questionable code style hehehehehe
 // its kind of a mental illness thing nyaa
 
 /** @param {string} query */
@@ -103,7 +103,7 @@ function draw(x, y)
     const element = $(`#editor-board-column-${y}-${x}`)
   
     element.className = ""
-    element.classList.add(`editor-board-tile-${current}`)
+    element.classList.add(`editor-board-tile-${current.replace("@", "d").replace("#", "g").replace("_", "e")}`)
 
     // this is ass
     if (mapString.length !== width * height) mapString += "_".repeat((width * height) - mapString.length)
@@ -111,8 +111,42 @@ function draw(x, y)
     const index = y * width + x
     mapString   = mapString.substring(0, index) + current + mapString.substring(index + 1)
 
-    console.log(mapString)
+    //console.log(mapString)
 }    
 
+$("#tools-picker-z").addEventListener("click", () => setCurrent("z"))
+$("#tools-picker-l").addEventListener("click", () => setCurrent("l"))
+$("#tools-picker-o").addEventListener("click", () => setCurrent("o"))
+$("#tools-picker-s").addEventListener("click", () => setCurrent("s"))
+$("#tools-picker-i").addEventListener("click", () => setCurrent("i"))
+$("#tools-picker-j").addEventListener("click", () => setCurrent("j"))
+$("#tools-picker-t").addEventListener("click", () => setCurrent("t"))
+$("#tools-picker-g").addEventListener("click", () => setCurrent("g"))
+$("#tools-picker-d").addEventListener("click", () => setCurrent("d"))
+$("#tools-picker-e").addEventListener("click", () => setCurrent("e"))
 
+/**
+ * @param {"z" | "l" | "o" | "s" | "i" | "j" | "t" | "g" | "d" | "e"} p
+ */
+function setCurrent(p)
+{
+    //@ts-ignore
+    current = p
+    .replace("d", "@")
+    .replace("g", "#")
+    .replace("e", "_")
+
+    console.log(current)
+
+    for (const x of ["z", "l", "o", "s", "i", "j", "t", "g", "d", "e"])
+    {
+        if (p === x) 
+        {
+            $(`#tools-picker-${x}`).classList.add("picker-highlight")
+            continue
+        }
+        
+        $(`#tools-picker-${x}`).classList.remove("picker-highlight")
+    }
+}
 

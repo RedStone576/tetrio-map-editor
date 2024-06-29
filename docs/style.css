@@ -8,13 +8,15 @@ body {
     margin: 0;
     padding: 0;
     color: white;
+    background-color: #131621;
 }
 
 /**/
 
 .container {
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 24% 75%;
+    column-gap: 1%;
     height: 100vh;
 }
 
@@ -23,7 +25,7 @@ body {
 .tools {
     display: flex;
     flex-direction: column;
-    background-color: blue;
+    /*background-color: blue;*/
     height: 100%;
 }
 
@@ -32,14 +34,32 @@ body {
     height: 25%;
 }
 
+.tools-picker {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 50% 50%;
+}
+
+.tools-picker > div {
+    height: 100%;
+}
+
+.picker-highlight {
+    box-shadow: inset 0px 0px 0px 5px #e2e2e2;
+}
+
 .tools-queue {
-    background-color: yellow;
+    /*background-color: yellow;*/
 }
 
 .tools-map {
     width: 100%;
     height: 50%;
-    background-color: green;
+    /*ackground-color: green;*/
+}
+
+.tools-queue, .tools-map {
+    padding: 5px;
 }
 
 #tools-queue-string, #tools-map-string {
@@ -50,12 +70,17 @@ body {
     box-shadow: none;
     width: 96%;
     height: 90%;
+    background-color: #060606AA;
+    border-top: 3px solid #0008;
+    border-left: 3px solid #0006;
+    border-bottom: 3px solid #2228;
+    border-right: 3px solid #1116;
 }
 
 /**/
 
 .editor {
-    background-color: #0e0f13;
+    /*background-color: #131621;*/
     height: 100%;
     user-select: none;
 }
@@ -68,15 +93,15 @@ body {
 }
 
 div[id|=editor-board-column] {
-    height: 14px;
-    width: 14px;
+    height: 13px;
+    width: 13px;
     border: solid 1px #2c3342;
 }
 
 .editor-board-tile-z, .editor-board-tile-l, .editor-board-tile-o, 
 .editor-board-tile-s, .editor-board-tile-i, .editor-board-tile-j, 
 .editor-board-tile-t, .editor-board-tile-g, .editor-board-tile-d {
-    border: solid 1px #CBD5E1 !important; 
+    border: solid 1px #DEE3FC !important; 
 }
 
 .editor-board-tile-z { background: #b5353b; }
@@ -94,23 +119,22 @@ div[id|=editor-board-column] {
 @media (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
+        grid-template-rows: 50% 50%;
     }
 
     .tools {
-        height: auto;
+        height: 100%;
     }
 
     .editor {
-        height: auto;
+        height: 100%;
     }
 
     .tools-picker, .tools-queue {
         height: 25%;
     }
-
+    
     .tools-map {
         height: 50%;
     }
 }
-
