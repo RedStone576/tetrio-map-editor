@@ -60,10 +60,15 @@ function draw(x: number, y: number)
     // this is ass
     if (mapString.length !== width * height) mapString += "_".repeat((width * height) - mapString.length)
 
-    const index = y * width + x
-    mapString   = mapString.substring(0, index) + current + mapString.substring(index + 1)
+    const c = current
+    .replace("E", "_")
+    .replace("G", "#")
+    .replace("D", "@")
 
-    $<HTMLTextAreaElement>("#tools-map-string").value = (mapString + (queueString ? "?" : "") + queueString).toUpperCase()
+    const index = y * width + x
+    mapString   = mapString.substring(0, index) + c + mapString.substring(index + 1)
+
+    $<HTMLTextAreaElement>("#tools-map-string").value = mapString + (queueString ? "?" : "") + queueString
 }
 
 // 
@@ -75,7 +80,7 @@ function queueOnInput()
     
     let filteredQueue = value
     .split("")
-    .filter(char => filter.indexOf(char.toLowerCase()) > -1)
+    .filter(char => filter.indexOf(char) > -1)
     .join("")
 
     // check delimiter
@@ -93,16 +98,28 @@ function queueOnInput()
 
 function mapOnInput()
 {
-    console.log("mapinput")
-
-    const filter = ["Z", "L", "O", "S", "I", "J", "T", "?"]
+    if ($<HTMLTextAreaElement>("#tools-map-string").value === "")
+    {
+        for (let y = 0; y < height; y++)
+        {
+            for (let x = 0; x < width; x++)
+            {
+                const element = $(`#editor-board-column-${y}-${x}`)
+            
+                element.className = ""
+                element.classList.add(`editor-board-tile-E`)
+            }
+        }
+    }
 
     const selectionStart = $<HTMLTextAreaElement>("#tools-map-string").selectionStart
-    const mapStringValue = $<HTMLTextAreaElement>("#tools-map-string").value/* "{mapString}?{queueString}?{holdPiece*}" */.split("?")
+    const mapStringValue = $<HTMLTextAreaElement>("#tools-map-string").value/* "{mapString}?{queueString}?{holdPiece*}" */.toUpperCase().split("?")
+ 
+    const filter = ["Z", "L", "O", "S", "I", "J", "T", "#", "@", "_", "?"]
     
     let filteredMapString = mapStringValue[0]
     .split("")
-    .filter(char => filter.indexOf(char.toLowerCase()) > -1)
+    .filter(char => filter.indexOf(char) > -1)
     .join("")
 
     // chop off extra char, might change this later
@@ -140,7 +157,7 @@ function mapOnInput()
             const element = $(`#editor-board-column-${y}-${x}`)
   
             element.className = ""
-            element.classList.add(`editor-board-tile-${current}`)
+            element.classList.add(`editor-board-tile-${mapArray[y][x].replace("_", "E").replace("#", "G").replace("@", "D")}`)
         }
     }
 }
