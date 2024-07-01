@@ -23,12 +23,12 @@ jobs:
 
             - name: transpile
               run: tsc
-              working-directory: ./site
+              working-directory: ./site/src
 
             - name: copy dir
               run: |
                 mkdir deploy
-                rsync -av --exclude='ts/' site/ deploy/
+                rsync -av --exclude='ts/' site/src deploy/
 
             - name: deploy
               uses: peaceiris/actions-gh-pages@v3
