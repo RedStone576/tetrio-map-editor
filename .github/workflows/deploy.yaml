@@ -4,9 +4,9 @@ on:
     push:
         branches:
             - master
-        paths:
-            - 'site/**'
-
+#        paths:
+#            - 'site/**'
+#
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -23,6 +23,7 @@ jobs:
 
             - name: transpile
               run: tsc
+              working-directory: ./site
 
             - name: copy dir
               run: |
