@@ -28,7 +28,7 @@ jobs:
             - name: copy dir
               run: |
                 mkdir deploy
-                rsync -av --exclude='ts/' site/src deploy/
+                rsync -av --exclude='ts/' site/src/. deploy/
 
             - name: deploy
               uses: peaceiris/actions-gh-pages@v3
