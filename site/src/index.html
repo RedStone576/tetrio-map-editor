@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Map Editor</title>
+        <link rel="stylesheet" href="./assets/style.css">
+        <script defer src="./js/index.js"></script>
+        <script defer src="./js/binding.js"></script>
+        <script defer src="./js/board.js"></script>
+    </head>
+    
+    <body>
+       <div class="container">
+            <div class="tools">
+                <div class="tools-picker">
+                    <div style="background: #b5353b" id="tools-picker-Z"></div>
+                    <div style="background: #b96737" id="tools-picker-L"></div>
+                    <div style="background: #b89e36" id="tools-picker-O"></div>
+                    <div style="background: #84b433" id="tools-picker-S"></div>
+                    <div style="background: #34b585" id="tools-picker-I"></div>
+
+                    <div style="background: #5240a6" id="tools-picker-J"></div>
+                    <div style="background: #a6409c" id="tools-picker-T"></div>
+                    <div style="background: #4b4b4b" id="tools-picker-G"></div>
+                    <div style="background: #222222" id="tools-picker-D"></div>
+                    <div style="background: #283145" id="tools-picker-E"></div>
+                </div>
+                
+                <div class="tools-queue">
+                    <textarea placeholder="queue..." id="tools-queue-string"></textarea>
+                </div>
+                
+                <div class="tools-map">
+                    <textarea placeholder="queue..." id="tools-map-string"></textarea>
+                </div>
+            </div>
+            
+            <div class="editor">
+                <div id="editor-board">
+            </div>
+        </div>
+    </body>
+</html> 
