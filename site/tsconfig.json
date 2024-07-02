@@ -3,7 +3,10 @@
         "rootDir": "./src/ts",
         "outDir": "./src/js",
         "strict": true,
-        "target": "es2020",
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "removeComments": true,
+        "target": "es2022",
         "lib": ["es2022", "dom", "dom.iterable"],
     }
 }

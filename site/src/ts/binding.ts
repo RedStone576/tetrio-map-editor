@@ -73,27 +73,37 @@ function draw(x: number, y: number)
 
 // 
 
-function queueOnInput()
+// this is so shit and its still broken wtf
+function queueOnInput(e: any)
 {
+    const { inputType } = e // ugly ahh
+    
+    const selectionStart = $<HTMLTextAreaElement>("#tools-queue-string").selectionStart
+    
     const value  = $<HTMLTextAreaElement>("#tools-queue-string").value.toUpperCase()
-    const filter = ["Z", "L", "O", "S", "I", "J", "T", "?"]
+    const filter = ["Z", "L", "O", "S", "I", "J", "T", "?", ","]
     
     let filteredQueue = value
     .split("")
     .filter(char => filter.indexOf(char) > -1)
     .join("")
 
-    // check delimiter
-    if (filteredQueue.split("?").length > 2)
-    {
-      const parts = filteredQueue.split("?")
-      
-      filteredQueue = [parts[0], parts[1]].join("?")
-    }
+    let parts = filteredQueue.split("?") as [string, string | undefined]
+
+    if (!/^[ZLOSIJT](,[ZLOSIJT])*$/.test(parts[0])) parts[0] = parts[0].replaceAll(",", "").split("").join(",")
+    if (parts[1] && parts[1].length > 1) parts[1] = parts[1][0]
+
+    filteredQueue = parts.length > 1 ? [parts[0], parts[1]].join("?") : parts[0]
+
+    //if (filteredQueue === "?") filteredQueue = ""
     
     queueString = filteredQueue
     $<HTMLTextAreaElement>("#tools-queue-string").value = filteredQueue
     $<HTMLTextAreaElement>("#tools-map-string").value   = mapString + (queueString ? "?" : "") + queueString
+
+    const sc = inputType === "deleteContentBackward" ? (selectionStart - 1) : (selectionStart + 1)
+    
+    $<HTMLTextAreaElement>("#tools-queue-string").setSelectionRange(sc < 0 ? 0 : sc, sc < 0 ? 0 : sc)
 }
 
 function mapOnInput()
@@ -113,7 +123,7 @@ function mapOnInput()
     }
 
     const selectionStart = $<HTMLTextAreaElement>("#tools-map-string").selectionStart
-    const mapStringValue = $<HTMLTextAreaElement>("#tools-map-string").value/* "{mapString}?{queueString}?{holdPiece*}" */.toUpperCase().split("?")
+    const mapStringValue = $<HTMLTextAreaElement>("#tools-map-string").value/* "{mapString}?{queueString}?{holdPiece*}" */.toUpperCase().split("?") as [string, string | undefined, string | undefined]
  
     const filter = ["Z", "L", "O", "S", "I", "J", "T", "#", "@", "_", "?"]
     
@@ -157,7 +167,8 @@ function mapOnInput()
             const element = $(`#editor-board-column-${y}-${x}`)
   
             element.className = ""
-            element.classList.add(`editor-board-tile-${mapArray[y][x].replace("_", "E").replace("#", "G").replace("@", "D")}`)
+            // i put bangs here
+            element.classList.add(`editor-board-tile-${mapArray[y]![x]!.replace("_", "E").replace("#", "G").replace("@", "D")}`)
         }
     }
 }

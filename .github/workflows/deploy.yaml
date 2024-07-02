@@ -4,9 +4,9 @@ on:
     push:
         branches:
             - master
-#        paths:
-#            - 'site/**'
-#
+        paths:
+            - 'site/**'
+
 jobs:
     build:
         runs-on: ubuntu-latest
