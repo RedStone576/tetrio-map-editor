@@ -1,0 +1,21 @@
+{
+    "maps": [
+        {
+            "name": "Indonesia Map",
+            "settings": "55x30",
+            "mapString": "___________________________________________________________________________________________________________________________o____________________s_____________________j______________________________________________________jjjt____________________________________________________oott__________________ss_______________________________ootss________________ssl____________s__________o_________ssiiii_______j___zooil____________ss_____________________jjszz_____sjjjzzooill___iiii_____s_____________________jtsszz____ssoozjjji_____t_s_________j__________s_______jttsljj____sootttji____tttss________jjj_________________tlllji_____llltzll____llljs___jjj__tttziiii_____________szzji__oo_l__zztl____ljjj______j___tzz_lll_t___________sszzi__oo____zttl____zoo____________z__lsstt______o_____soois_________t____zzooss_____________sszztl____________ootss_____________z__ss________________jzzl_____________ttjs__________________________________jooll_____________tjjj______________________z_________jjooss____________________________________________________ss___________________ss__________________________zz________________________sslll_____oo___zz_______oo____zz_________________________ljiiiit_ooiiiizz______oo________________________________jjj_tttsslll_____________________________o___________________ss_l_________________________________________________________________________________________________________________________________________________o___________________________________________________________________________________________________________________z______________________________________o__________________________________________________z____"
+        },
+        
+        {
+            "name": "Takodachi",
+            "settings": "40x40",
+            "mapString": "____________oooooooooooooll_______________________ll_______________ool___________________o____________________l_________________ol_____________________o________________o______________________o________________o_____________________lo_________________oo_____@@@@@@@@_____lo__________@@@@______ooo@@tttttttt@@ooo______@@@@_@tttt@______@@tttttttttttt@@______@tttt@@ttttt@@__@@tttttttttttttttt@@__@@ttttt@@ttttttt@@tttttttttttttttttttt@@ttttttt@@tttttttttttttttttttttttttttttttttttttt@_@tttttttttttttttttttttttttttttttttttt@___@@tttttttttttttttttttttttttttttttt@@______@@tttttttttttttttttttttttttttt@@__________@tttttttttttttttttttttttttt@____________@tttttttttttttttttttttttttt@____________@tttttttttttttttttttttttttt@___________@ttttttt@@@@ttttt@@@@tttttttt@__________@tttttt@@@ttttttttt@@@ttttttt@__________@ttttt@@ttttttttttttt@@tttttt@__________@tttt@@ttttttttttttttt@@ttttt@_________@tttttttttt@ttt@@ttt@tttttttttt@________@ttttttzzttt@@@tt@@@ttttttttttt@________@tttttzttttttttttttttttzzzttttt@________@tttttttttttttttttttttttttttttt@_______@tttttttttttttttttttttttttttttttt@______@tttttttttttttttttttttttttttttttt@______@tttttttttttttttttttttttttttttttt@______@tttttttttttttttttttttttttttttttt@______@tttttttttttttttttttttttttttttttt@______@tttttttttttttttttttttttttttttttt@_____@tttttttttttttttttttttttttttttttttt@____@tttttttttttttttttttttttttttttttttt@___@tttttttttttttttttttttttttttttttttttt@__@tttttttttttttttttttttttttttttttttttt@__@tttt@@t@@@t@@@tt@@@@tt@@@t@@@t@@tttt@__@ttt@__@@@@@___@@@@@@@@___@@@@@__@ttt@___@@@____@@@______@@@@______@@@____@@@__________________________________________"
+        },
+        
+        {
+            "name": "10 Lines Puzzle",
+            "settings": "srs-x",
+            "mapString": "____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________oo________oo#__#____##__##____#__#________##______#__#____#____#______#_##____#____######_#_##____#_?iissttsiszzszjttjtjtjtjtj?s"
+        },
+    ]
+}
